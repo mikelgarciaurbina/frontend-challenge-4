@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> Matches snapshot 1`] = `
+<div
+  className="landbot-header"
+>
+  <h1
+    className="subtitle"
+  >
+    Test
+  </h1>
+</div>
+`;
