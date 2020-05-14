@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Button, Header, Input } from '../../../../components';
+import { Button, Footer, Header, Input } from '../../../../components';
 
 var core = new window.Landbot.Core({
   firebase: window.firebase,
@@ -74,28 +74,24 @@ export default function Chat() {
         }
       </div>
 
-      <div className="landbot-input-container">
-        <div className="field">
-          <div className="control">
-            <Input
-              onChange={e => setInput(e.target.value)}
-              onKeyUp={e => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  submit();
-                }
-              }}
-              placeholder="Type here..."
-              value={input}
-            />
-            <Button
-              icon="fas fa-paper-plane fa-lg"
-              onClick={submit}
-              disabled={input === ''}
-            />
-          </div>
-        </div>
-      </div>
+      <Footer>
+        <Input
+          onChange={e => setInput(e.target.value)}
+          onKeyUp={e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          placeholder="Type here..."
+          value={input}
+        />
+        <Button
+          icon="fas fa-paper-plane fa-lg"
+          onClick={submit}
+          disabled={input === ''}
+        />
+      </Footer>
     </>
   );
 }
