@@ -21,10 +21,9 @@ export default function Message({ author, text }) {
   );
 }
 Message.propTypes = {
-  author: PropTypes.oneOf(['bot', 'user']),
+  author: PropTypes.oneOf(['bot', 'user']).isRequired,
   text: PropTypes.string,
 };
 Message.defaultProps = {
-  author: '',
   text: '',
 };
