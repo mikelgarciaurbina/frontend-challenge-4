@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Header } from '../../../../components';
+import { Header, Input } from '../../../../components';
 
 var core = new window.Landbot.Core({
   firebase: window.firebase,
@@ -77,11 +77,7 @@ export default function Chat() {
       <div className="landbot-input-container">
         <div className="field">
           <div className="control">
-            <input
-              className="landbot-input"
-              type="text"
-              placeholder="Type here..."
-              value={input}
+            <Input
               onChange={e => setInput(e.target.value)}
               onKeyUp={e => {
                 if (e.key === 'Enter') {
@@ -89,6 +85,8 @@ export default function Chat() {
                   submit();
                 }
               }}
+              placeholder="Type here..."
+              value={input}
             />
             <button
               className="button landbot-input-send"
