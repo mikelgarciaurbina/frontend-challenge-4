@@ -10,7 +10,9 @@
  * @returns {Array} Array of Connection models.
  */
 export function getNodeInputConnections(node, graph) {
-  
+  const connectionsValuesArray = Object.values(graph.connections);
+  const matchingConnections = connectionsValuesArray.filter(({ targetPath }) => targetPath === node.id);
+  return matchingConnections;
 }
 
 /**
