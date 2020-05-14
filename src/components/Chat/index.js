@@ -7,7 +7,7 @@ import {
   Header,
   Input,
   Message,
-} from '../../../../components';
+} from '../../atoms';
 
 var core = new window.Landbot.Core({
   firebase: window.firebase,

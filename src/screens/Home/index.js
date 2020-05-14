@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Chat } from './components';
+import { Chat } from '../../components';
 
 export default function Home() {
   return (
