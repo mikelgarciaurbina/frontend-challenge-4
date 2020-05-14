@@ -1,1 +1,1 @@
-export { default as MessageModules } from './message';
+export { default as MessageModules } from './Message';
