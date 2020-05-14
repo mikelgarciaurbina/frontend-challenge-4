@@ -53,13 +53,11 @@ export function getNodeConnections(node, graph) {
  * @returns {Array} Array of Node models.
  */
 export function getLeafNodes(graph) {
-  const result = [];
-  const connectionsValuesArray = Object.values(graph.connections);
   const nodesValuesArray = Object.values(graph.nodes);
 
-  nodesValuesArray.forEach((node) => {
-    const connections = connectionsValuesArray.filter(({ sourcePath }) => sourcePath === node.id);
-    if (!connections.length) result.push(node);
+  const result = nodesValuesArray.filter((node) => {
+    const connections = getNodeOutputConnections(node, graph);
+    return !connections.length;
   });
   
   return result;
