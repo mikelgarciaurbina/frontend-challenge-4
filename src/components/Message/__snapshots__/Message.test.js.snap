@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Message /> Matches snapshot 1`] = `
+<article
+  className="media landbot-message"
+  data-author="bot"
+>
+  <figure
+    className="media-left landbot-message-avatar"
+  >
+    <p
+      className="image is-64x64"
+    >
+      <img
+        alt=""
+        className="is-rounded"
+        src="http://i.pravatar.cc/100"
+      />
+    </p>
+  </figure>
+  <div
+    className="media-content landbot-message-content"
+  >
+    <div
+      className="content"
+    >
+      <p>
+        test
+      </p>
+    </div>
+  </div>
+</article>
+`;
