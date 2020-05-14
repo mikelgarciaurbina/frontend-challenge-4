@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Header, Input } from '../../../../components';
+import { Button, Header, Input } from '../../../../components';
 
 var core = new window.Landbot.Core({
   firebase: window.firebase,
@@ -88,15 +88,11 @@ export default function Chat() {
               placeholder="Type here..."
               value={input}
             />
-            <button
-              className="button landbot-input-send"
+            <Button
+              icon="fas fa-paper-plane fa-lg"
               onClick={submit}
               disabled={input === ''}
-            >
-              <span className="icon is-large">
-                <i className="fas fa-paper-plane fa-lg"></i>
-              </span>
-            </button>
+            />
           </div>
         </div>
       </div>
