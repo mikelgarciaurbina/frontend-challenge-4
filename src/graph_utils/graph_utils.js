@@ -72,7 +72,16 @@ export function getLeafNodes(graph) {
  * @returns {Array} Array of Node models.
  */
 export function getRootNodes(graph) {
+  const result = [];
+  const connectionsValuesArray = Object.values(graph.connections);
+  const nodesValuesArray = Object.values(graph.nodes);
+
+  nodesValuesArray.forEach((node) => {
+    const connections = connectionsValuesArray.filter(({ targetPath }) => targetPath === node.id);
+    if (!connections.length) result.push(node);
+  });
   
+  return result;
 }
 
 /**
