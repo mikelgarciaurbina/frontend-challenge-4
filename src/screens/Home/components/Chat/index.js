@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {
+  Body,
   Button,
   Footer,
   Header,
@@ -55,7 +56,7 @@ export default function Chat() {
     <>
       <Header>Landbot</Header>
 
-      <div id="landbot-messages-container" className="landbot-messages-container">
+      <Body>
         {Object.values(messages)
           .filter(messagesFilter)
           .sort((a, b) => a.timestamp - b.timestamp)
@@ -67,7 +68,7 @@ export default function Chat() {
             />
           ))
         }
-      </div>
+      </Body>
 
       <Footer>
         <Input
