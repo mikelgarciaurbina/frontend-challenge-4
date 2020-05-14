@@ -8,6 +8,7 @@ import {
   Input,
   Message,
 } from '../../atoms';
+import { MessageModules } from '../../modules';
 
 var core = new window.Landbot.Core({
   firebase: window.firebase,
@@ -27,7 +28,7 @@ export default function Chat() {
     core.pipelines.$readableSequence.subscribe(data => {
       setMessages(messages => ({
         ...messages,
-        [data.key]: parseMessage(data),
+        [data.key]: MessageModules.parseMessage(data),
       }))
     });
 
@@ -35,7 +36,7 @@ export default function Chat() {
       .init()
       .then(data => {
         setMessages(
-          parseMessages(data.messages)
+          MessageModules.parseMessages(data.messages)
         );
       });
   }, []);
@@ -58,7 +59,7 @@ export default function Chat() {
 
       <Body>
         {Object.values(messages)
-          .filter(messagesFilter)
+          .filter(MessageModules.messagesFilter)
           .sort((a, b) => a.timestamp - b.timestamp)
           .map(message => (
             <Message
@@ -90,30 +91,6 @@ export default function Chat() {
       </Footer>
     </>
   );
-}
-
-function parseMessages(messages) {
-  return Object
-    .values(messages)
-    .reduce((obj, next) => {
-      obj[next.key] = parseMessage(next);
-      return obj;
-    }, {});
-}
-
-function parseMessage(data) {
-  return {
-    key: data.key,
-    text: data.title || data.message,
-    author: data.samurai !== undefined ? 'bot' : 'user',
-    timestamp: data.timestamp,
-    type: data.type,
-  };
-}
-
-function messagesFilter(data) {
-  /** Support for basic message types */
-  return ['text', 'dialog'].includes(data.type);
 }
 
 function scrollBottom(container) {
