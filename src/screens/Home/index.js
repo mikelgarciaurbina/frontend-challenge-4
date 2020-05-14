@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Chat from './Chat';
+import Chat from '../../components/Chat';
 
-export default function App() {
+export default function Home() {
   return (
     <section id="landbot-app" className="hero is-fullheight is-dark">
       <div className="hero-body">
