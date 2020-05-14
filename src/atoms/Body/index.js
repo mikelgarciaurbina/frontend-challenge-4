@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Body({ children }) {
+export default function Body({ children, innerRef }) {
   return (
-    <div id="landbot-messages-container" className="landbot-messages-container">
+    <div id="landbot-messages-container" className="landbot-messages-container" ref={innerRef}>
       {children}
     </div>
   );

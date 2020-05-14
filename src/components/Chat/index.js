@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import {
   Body,
@@ -23,6 +23,7 @@ var core = new window.Landbot.Core({
 export default function Chat() {
   const [messages, setMessages] = useState({});
   const [input, setInput] = useState('');
+  const bodyEl = useRef(null);
 
   useEffect(() => {
     core.pipelines.$readableSequence.subscribe(data => {
@@ -42,8 +43,12 @@ export default function Chat() {
   }, []);
 
   useEffect(() => {
-    const container = document.getElementById('landbot-messages-container');
-    scrollBottom(container);
+    if (bodyEl && bodyEl.current) {
+      bodyEl.current.scrollTo({
+        top: bodyEl.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [messages]);
 
   const submit = () => {
@@ -57,7 +62,7 @@ export default function Chat() {
     <>
       <Header>Landbot</Header>
 
-      <Body>
+      <Body innerRef={bodyEl}>
         {Object.values(messages)
           .filter(MessageModules.messagesFilter)
           .sort((a, b) => a.timestamp - b.timestamp)
@@ -91,13 +96,4 @@ export default function Chat() {
       </Footer>
     </>
   );
-}
-
-function scrollBottom(container) {
-  if (container) {
-    container.scrollTo({
-      top: container.scrollHeight,
-      behavior: 'smooth',
-    });
-  }
 }
