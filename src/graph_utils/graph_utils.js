@@ -12,6 +12,7 @@
 export function getNodeInputConnections(node, graph) {
   const connectionsValuesArray = Object.values(graph.connections);
   const matchingConnections = connectionsValuesArray.filter(({ targetPath }) => targetPath === node.id);
+  
   return matchingConnections;
 }
 
@@ -25,6 +26,7 @@ export function getNodeInputConnections(node, graph) {
 export function getNodeOutputConnections(node, graph) {
   const connectionsValuesArray = Object.values(graph.connections);
   const matchingConnections = connectionsValuesArray.filter(({ sourcePath }) => sourcePath === node.id);
+  
   return matchingConnections;
 }
 
@@ -36,7 +38,12 @@ export function getNodeOutputConnections(node, graph) {
  * @returns {Array} Array of Connection models.
  */
 export function getNodeConnections(node, graph) {
-  
+  const connectionsValuesArray = Object.values(graph.connections);
+  const matchingConnections = connectionsValuesArray.filter(({ sourcePath, targetPath }) => (
+    sourcePath === node.id || targetPath === node.id
+  ));
+
+  return matchingConnections;
 }
 
 /**
@@ -46,7 +53,16 @@ export function getNodeConnections(node, graph) {
  * @returns {Array} Array of Node models.
  */
 export function getLeafNodes(graph) {
+  const result = [];
+  const connectionsValuesArray = Object.values(graph.connections);
+  const nodesValuesArray = Object.values(graph.nodes);
+
+  nodesValuesArray.forEach((node) => {
+    const connections = connectionsValuesArray.filter(({ sourcePath }) => sourcePath === node.id);
+    if (!connections.length) result.push(node);
+  });
   
+  return result;
 }
 
 /**
