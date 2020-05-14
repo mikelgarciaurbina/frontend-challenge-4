@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> Matches snapshot 1`] = `
+<button
+  className="button landbot-input-send"
+  disabled={false}
+  onClick={[Function]}
+>
+  <span
+    className="icon is-large"
+  >
+    <i
+      className="fas fa-paper-plane fa-lg"
+    />
+  </span>
+</button>
+`;
