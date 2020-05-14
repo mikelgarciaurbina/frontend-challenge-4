@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { Button, Footer, Header, Input } from '../../../../components';
+import {
+  Button,
+  Footer,
+  Header,
+  Input,
+  Message,
+} from '../../../../components';
 
 var core = new window.Landbot.Core({
   firebase: window.firebase,
@@ -54,22 +60,11 @@ export default function Chat() {
           .filter(messagesFilter)
           .sort((a, b) => a.timestamp - b.timestamp)
           .map(message => (
-            <article
+            <Message
+              author={message.author}
               key={message.key}
-              data-author={message.author}
-              className="media landbot-message"
-            >
-              <figure className="media-left landbot-message-avatar">
-                <p className="image is-64x64">
-                  <img className="is-rounded" src="http://i.pravatar.cc/100" alt="" />
-                </p>
-              </figure>
-              <div className="media-content landbot-message-content">
-                <div className="content">
-                  <p>{message.text}</p>
-                </div>
-              </div>
-            </article>
+              text={message.text}
+            />
           ))
         }
       </div>
