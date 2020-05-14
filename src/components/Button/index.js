@@ -16,11 +16,10 @@ export default function Button({ disabled, icon, onClick }) {
 }
 Button.propTypes = {
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 Button.defaultProps = {
   disabled: false,
-  icon: '',
   onClick() {},
 };
