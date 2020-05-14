@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Header } from '../../../../components';
+
 var core = new window.Landbot.Core({
   firebase: window.firebase,
   brandID: 12235,
@@ -45,9 +47,7 @@ export default function Chat() {
 
   return (
     <>
-      <div className="landbot-header">
-        <h1 className="subtitle">Landbot</h1>
-      </div>
+      <Header>Landbot</Header>
 
       <div id="landbot-messages-container" className="landbot-messages-container">
         {Object.values(messages)
