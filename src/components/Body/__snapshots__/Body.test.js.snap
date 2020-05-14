@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Body /> Matches snapshot 1`] = `
+<div
+  className="landbot-messages-container"
+  id="landbot-messages-container"
+>
+  Test
+</div>
+`;
